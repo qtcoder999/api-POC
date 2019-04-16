@@ -22,19 +22,19 @@ class DisplayComponents extends Component {
   }
 
   renderComponent(componentName) {
-    this.RealComponent = ReactDynamicImport({
+    this.DynamicComponent = ReactDynamicImport({
       name: componentName,
       loader,
     });
   }
 
   render() {
-    const { RealComponent } = this;
+    const { DynamicComponent } = this;
 
     return (
       <div>
-        {RealComponent && RealComponent !== 'undefined' ? (
-          <RealComponent />
+        {DynamicComponent && DynamicComponent !== 'undefined' ? (
+          <DynamicComponent />
         ) : null}
       </div>
     );
