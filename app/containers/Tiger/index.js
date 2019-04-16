@@ -14,18 +14,23 @@ import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import makeSelectTiger from './selectors';
+import { makeSelectComponentNames } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
-import TigerDumb from '../../components/TigerDumb';
+import DisplayComponents from '../../components/DisplayComponents';
+import { getComponentNames } from './actions';
 
 /* eslint-disable react/prefer-stateless-function */
 export class Tiger extends React.Component {
+  componentDidMount() {
+    this.props.getComponentNames();
+  }
+
   render() {
     return (
       <div>
-        <TigerDumb {...this.props} />
+        <DisplayComponents {...this.props} />
         <FormattedMessage {...messages.header} />
       </div>
     );
@@ -37,11 +42,15 @@ Tiger.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  tiger: makeSelectTiger(),
+  // tiger: makeSelectTiger(),
+  componentNames: makeSelectComponentNames(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
+    getComponentNames() {
+      dispatch(getComponentNames());
+    },
     dispatch,
   };
 }

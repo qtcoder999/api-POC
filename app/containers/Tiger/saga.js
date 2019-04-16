@@ -2,6 +2,7 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
 import { GET_COMPONENT_NAME } from './constants';
 import request from '../../utils/request';
+import { setComponentNames } from './actions';
 
 export function* getRepos() {
   const requestURL = `http://demo9304193.mockable.io/`;
@@ -9,9 +10,10 @@ export function* getRepos() {
   try {
     // Call our request helper (see 'utils/request')
     const names = yield call(request, requestURL);
-    yield put(reposLoaded(names));
+    yield put(setComponentNames(names));
   } catch (err) {
-    yield put(repoLoadingError(err));
+    // eslint-disable-next-line no-console
+    console.log(err);
   }
 }
 
