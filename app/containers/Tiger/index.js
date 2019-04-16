@@ -8,7 +8,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
@@ -17,7 +16,6 @@ import injectReducer from 'utils/injectReducer';
 import { makeSelectComponentNames } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
 import DisplayComponents from '../../components/DisplayComponents';
 import { getComponentNames } from './actions';
 
@@ -31,7 +29,6 @@ export class Tiger extends React.Component {
     return (
       <div>
         <DisplayComponents {...this.props} />
-        <FormattedMessage {...messages.header} />
       </div>
     );
   }
