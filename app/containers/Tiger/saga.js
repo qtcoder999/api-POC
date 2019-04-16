@@ -6,7 +6,8 @@ import { setComponentNames } from './actions';
 
 export function* getRepos() {
   // const requestURL = `http://demo9304193.mockable.io/`;
-  const requestURL = `http://www.mocky.io/v2/5cb5b6f633000071375d7d68`;
+  // const requestURL = `http://www.mocky.io/v2/5cb5b6f633000071375d7d68`;
+  const requestURL = `https://27a21969-147a-4002-bf5a-e1195399e978.mock.pstmn.io`;
 
   try {
     // Call our request helper (see 'utils/request')
